@@ -195,11 +195,12 @@ var user = {
 //Let's say I, the user, decided to change my name and email address to the following
 // name -> 'Tyler S. McGinnis', email -> 'tyler.mcginnis@devmounta.in'. Make that change.
 
-  //Code Here
+user.name = "Tyler S. McGinnis";
+user.email = "tyler.mcginnis@devmounta.in"
 
 //Now call the sayName method that's on the user object which will alert the users email
 
-  //Code Here
+user.sayName();
 
 
 
@@ -211,17 +212,24 @@ var user = {
 
 //Create an empty object called methodCollection.
 
-  //Code Here
+var methodCollection = {};
 
 /*Now add two methods (functions that are properties on objects) to your methodCollection
 object. One called 'alertHello' which alerts 'hello' and another method called logHello
  which logs 'hello' to the console. */
 
-  //Code Here
+methodCollection.alertHello = function () {
+  alert('Hello')
+}
+
+methodCollection.logHello = function () {
+  console.log('Hello')
+}
 
 //Now call your alertHello and logHello methods.
 
-  //Code Here
+methodCollection.alertHello();
+methodCollection.logHello();
 
 
 
@@ -231,7 +239,16 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 
 // Create a function called MakePerson which takes in name, birthday, ssn as its parameters and returns a new object with all of the information that you passed in.
 
-  //Code Here
+var MakePerson = function (name, birthday, ssn) {
+  var person = {
+    name: name,
+    birthday: birthday,
+    ssn: ssn
+  };
+  return person;
+}
+
+MakePerson("Jeff", "Feb", 890);
 
 
 
@@ -239,9 +256,18 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 
 
 
-// Create a function called MakeCard which takes in all the data it needs to make a Credit Card object and returns that object so that whenever you invoke MakeCard, you get a brand new credit card.
+// Create a function called MakeCard which takes in all the data it needs to make a Credit Card object 
+// and returns that object so that whenever you invoke MakeCard, you get a brand new credit card.
 
-  //Code Here
+var makeCard = function (name, num) {
+  var newCard = {
+    name: name,
+    num: num
+  }
+  return newCard;
+}
+
+makeCard("jeff", 987)
   
   
   
@@ -250,10 +276,38 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 
 
 /* As of this point you should have a MakePerson and a MakeCard function which returns you either a person or a credit card object.
-   Now, create a bindCard function that takes in a person object as its first parameter and a creditcard object as its second parameter.
-   Have bindCard merge the two parameters together into a new object which contains all the properties from the person as well as the creditcard.
+   Now, create a bindCard function that 
+   takes in a person object as its first parameter and a creditcard object as its second parameter.
+   Have bindCard merge the two parameters together into a new object which contains all the properties from the person as well as the cc.
 */
 
-  //Code Here
 
+var MakePerson = function (name, birthday, ssn) {
+  var person = {
+    name: name,
+    birthday: birthday,
+    ssn: ssn
+  };
+  return person;
+}
 
+var makeCard = function (name, num) {
+  var newCard = {
+    ccname: name,
+    num: num
+  }
+  return newCard;
+}
+
+var bindCard = function (person, cc) {
+  var bound = {};
+  for (var key in person) {
+    bound[key] = person[key];
+  }
+  for (var key in cc) {
+    bound[key] = cc[key]
+  }
+  console.log(bound);
+}
+
+bindCard(MakePerson("Jeff", "Feb", 890), makeCard("jeff", 987))
